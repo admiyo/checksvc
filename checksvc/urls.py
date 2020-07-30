@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from checksvc.views import HomePageView
+from checksvc.views import ServiceListView
+from checksvc.views import ServicePageView
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^service$', ServicePageView.as_view(), name='home'),
+    url(r'^$', ServiceListView.as_view(), name='services'),
+    url(r'^addsvc$', HomePageView.as_view(), name='service'),
+
 ]
